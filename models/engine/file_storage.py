@@ -70,6 +70,7 @@ class FileStorage:
         self.reload()
 
     def get(self, cls, id):
+        """ get method"""
         if cls is None or id is None:
             return None
         new_dict = {}
@@ -79,4 +80,8 @@ class FileStorage:
                     new_dict[key] = value
                 
         return new_dict
+
+    def count(self, cls=None):
+        """ count method"""
+        return None
         

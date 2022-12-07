@@ -76,6 +76,7 @@ class DBStorage:
         self.__session.remove()
 
     def get(self, cls, id):
+        """ get method"""
         new_dict = {}
         if cls is None or id is None:
             return None
@@ -88,3 +89,7 @@ class DBStorage:
 
         
         return (new_dict)
+    
+    def count(self, cls=None):
+        """count method"""
+        return None
