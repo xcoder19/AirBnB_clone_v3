@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" flask app"""
 from flask import Flask ,Blueprint
 from os import getenv
 from models import storage
