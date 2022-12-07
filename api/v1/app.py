@@ -16,11 +16,8 @@ def teardown():
 
 
 if __name__ == "__main__":
-    host = getenv("HBNB_API_HOST")
-    port = getenv("HBNB_API_PORT")
+    host = getenv("HBNB_API_HOST", default='0.0.0.0')
+    port = getenv("HBNB_API_PORT", default='5000')
 
-    if host and port:
-        app.run(host=host, port=port, threaded=True)
-
-    else:
-        app.run(host="0.0.0.0", port=5000, threaded=True)
+    
+    app.run(host=host, port=port, threaded=True)
