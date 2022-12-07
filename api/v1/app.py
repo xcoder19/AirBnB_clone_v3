@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""app"""
+"""
+server flask app
+"""
 
 
 from flask import Flask ,Blueprint
