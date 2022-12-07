@@ -1,9 +1,13 @@
 #!/usr/bin/python3
 """flaskapp"""
+
+
 from flask import Flask ,Blueprint
 from api.v1.views import app_views
 from models import storage
 from os import getenv
+
+
 
 
 app = Flask(__name__)
