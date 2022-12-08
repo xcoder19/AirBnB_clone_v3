@@ -18,6 +18,9 @@ app.register_blueprint(app_views)
 def teardown(exception):
     storage.close()
 
+@app.errorhandler(404)
+def not_found(e):
+    return jsonify(error="Not found")
 
 if __name__ == "__main__":
     host = getenv("HBNB_API_HOST", default='0.0.0.0')
