@@ -33,7 +33,8 @@ def delete_city_id(state_id):
     return jsonify({}), 200
 
 
-@app_views.route('/states/<state_id>/cities', strict_slashes=False, methods=['POST'])
+@app_views.route('/states/<state_id>/cities',
+                 strict_slashes=False, methods=['POST'])
 def POST_city():
     try:
         body = request.get_json()
