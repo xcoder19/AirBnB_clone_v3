@@ -7,13 +7,13 @@ from models.state import State
 
 
 @app_views.route('/states', strict_slashes=False, methods=['GET'])
-def states():
+def GET_states():
     states = storage.all(State).values()
     return jsonify([state.to_dict() for state in states])
 
 
 @app_views.route('/states/<state_id>', strict_slashes=False, methods=['GET'])
-def states(state_id):
+def states_id(state_id):
     state = storage.get(State, state_id)
     if not state:
         abort(404)
@@ -23,7 +23,7 @@ def states(state_id):
 @app_views.route('/states/<state_id>',
                  strict_slashes=False,
                  methods=['DELETE'])
-def delete(state_id):
+def delete_state_id(state_id):
     state = storage.get(State, state_id)
     if not state:
         abort(404)
@@ -34,7 +34,7 @@ def delete(state_id):
 
 
 @app_views.route('/states', strict_slashes=False, methods=['POST'])
-def states():
+def POST_states():
     try:
         body = request.get_json()
         if body is None:
@@ -51,7 +51,7 @@ def states():
 
 
 @app_views.route('/states/<state_id>', methods=["PUT"])
-def states(state_id):
+def PUT_states(state_id):
 
     found = storage.get(State, state_id)
     if not found:
