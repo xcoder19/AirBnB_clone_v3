@@ -71,7 +71,7 @@ def put_city(city_id):
         else:
             invalid = ['id', 'created_at', 'updated_at']
             for k, v in req.items():
-                if key not in invalid:
+                if k not in invalid:
                     setattr(found, k, v)
             storage.save()
             return jsonify(found.to_dict()), 200
