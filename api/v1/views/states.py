@@ -52,7 +52,7 @@ def POST_states():
 
 @app_views.route('/states/<state_id>', methods=["PUT"])
 def PUT_states(state_id):
-    print(state_id)
+    
     found = storage.get(State, state_id)
     if not found:
         abort(404)
