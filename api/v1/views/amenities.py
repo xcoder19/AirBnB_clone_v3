@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-"""amenity route """
+"""amenity route"""
 from flask import jsonify, abort, request
 from api.v1.views import app_views
 from models import storage
 from models.state import State
 from models.state import City
 from models.amenity import amenity
+
 
 @app_views.route('/amenities',
                  strict_slashes=False,
@@ -21,7 +22,7 @@ def all_amenities():
                  methods=['GET'])
 def get_amenity(amenity_id):
     amenity = storage.get(Amenity, amenity_id)
-    if  amenity is None:
+    if amenity is None:
         abort(404)
     return jsonify(amenity.to_dict())
 
@@ -31,7 +32,7 @@ def get_amenity(amenity_id):
                  methods=['DELETE'])
 def delete_amenity(amenity_id):
     amenity = storage.get(Amenity, amenity_id)
-    if  amenity is None:
+    if amenity is None:
         abort(404)
     storage.delete(amenity)
     storage.save()
@@ -61,7 +62,7 @@ def post_amenity():
 
 @app_views.route('/amenities/<amenity_id>', methods=["PUT"])
 def update_amenity(amenity_id):
-    
+
     found = storage.get(Amenity, amenity_id)
     if not found:
         abort(404)
