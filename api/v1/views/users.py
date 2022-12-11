@@ -8,6 +8,7 @@ from models.state import City
 from models.amenity import Amenity
 from models.user import User
 
+
 @app_views.route('/users',
                  strict_slashes=False,
                  methods=['GET'])
