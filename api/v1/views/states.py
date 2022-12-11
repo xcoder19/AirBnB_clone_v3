@@ -13,7 +13,7 @@ def GET_states():
 
 
 @app_views.route('/states/<state_id>', strict_slashes=False, methods=['GET'])
-def states_id(state_id):
+def get_states_id(state_id):
     state = storage.get(State, state_id)
     if not state:
         abort(404)
@@ -52,7 +52,7 @@ def POST_states():
 
 @app_views.route('/states/<state_id>', methods=["PUT"])
 def PUT_states(state_id):
-
+    print(state_id)
     found = storage.get(State, state_id)
     if not found:
         abort(404)
@@ -65,7 +65,7 @@ def PUT_states(state_id):
             invalid = ['id', 'created_at', 'updated_at']
             for k, v in req.items():
                 if k not in invalid:
-                    setattr(found, key, value)
+                    setattr(found, k, v)
             storage.save()
             return jsonify(found.to_dict()), 200
     except ValueError:
