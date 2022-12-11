@@ -4,17 +4,18 @@ from flask import jsonify, abort, request
 from api.v1.views import app_views
 from models import storage
 from models.state import State
+from models.state import City
 
 
 @app_views.route('/cities', strict_slashes=False, methods=['GET'])
 def GET_cities():
-    states = storage.all(State).values()
+    states = storage.all(City).values()
     return jsonify([state.to_dict() for state in states])
 
 
 @app_views.route('/cities/<city_id>', strict_slashes=False, methods=['GET'])
 def get_cities_id(state_id):
-    state = storage.get(State, state_id)
+    state = storage.get(City, city_id)
     if not state:
         abort(404)
     return jsonify(state.to_dict())
@@ -24,7 +25,7 @@ def get_cities_id(state_id):
                  strict_slashes=False,
                  methods=['DELETE'])
 def delete_city_id(state_id):
-    state = storage.get(State, state_id)
+    state = storage.get(City, city_id)
     if not state:
         abort(404)
     storage.delete(state)
@@ -54,7 +55,7 @@ def POST_city():
 @app_views.route('/cities/<city_id>', methods=["PUT"])
 def PUT_city(state_id):
 
-    found = storage.get(State, state_id)
+    found = storage.get(City, city_id)
     if not found:
         abort(404)
 
